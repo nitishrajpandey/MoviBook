@@ -1,7 +1,8 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { checkValidData } from "../pages/login_Signup/formValidate/validate"
-import { addMessages } from "../store/loginSignupSlice";
+import { addMessages, addUser, removeUser } from "../store/loginSignupSlice";
 import { auth } from "./firebase";
+
 
 
 // signup logic or create account
@@ -21,7 +22,7 @@ export const signup = async (email, password, username, dispatch) => {
     } catch (error) {
         const errorCode = error.code;
         const errorMessage = error.message;
-        dispatch(addMessages(errorCode + " - " + errorMessage));
+        dispatch(addMessages(errorCode))
     }
 }
 
@@ -42,9 +43,9 @@ export const login = async (email, password, dispatch) => {
         console.log(user);
 
     } catch (error) {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        dispatch(addMessages(errorCode + " - " + errorMessage));
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
+        dispatch(addMessages("Please check Email or password !"));
     }
 
 }
@@ -59,12 +60,26 @@ export const signOutUser = async (navigate) => {
 
     try {
         await signOut(auth);
-        navigate("/")
+
     } catch (error) {
         navigate("/error")
     }
 }
 
 
+// ononAuthStateChanged
 
+export const handelAuthStateChanged = (navigate, dispatch) => {
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            const { uid, email, displayName } = user;
+            dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
+            navigate("/home");
+        } else {
+            dispatch(removeUser());
+            navigate("/");
+        }
+    });
+}
 

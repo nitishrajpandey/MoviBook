@@ -1,18 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ContentWrapper from "../contentWrapper/ContentWrapper";
-import { logo, logo1 } from "../../assets";
-import { useSelector } from "react-redux";
+import { logo } from "../../assets";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { signOutUser } from "../../firebase/authService";
+import {
+  handelAuthStateChanged,
+  signOutUser,
+} from "../../firebase/authService";
 import "./style.css";
+
 function Header() {
   const user = useSelector((state) => state.loginSignup.userData);
   const navigate = useNavigate();
-  console.log(user);
+  const dispatch = useDispatch();
 
   const handelSignOut = () => {
     signOutUser(navigate);
   };
+
+  useEffect(() => {
+    handelAuthStateChanged(navigate, dispatch);
+  }, []);
 
   return (
     <>

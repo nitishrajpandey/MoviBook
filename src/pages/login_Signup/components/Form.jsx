@@ -9,13 +9,19 @@ function Form() {
   );
   const message = useSelector((state) => state.loginSignup.message);
   const dispatch = useDispatch();
+
+  // store name,email,password from "Form"
   const userNameElement = useRef();
   const emailElement = useRef();
   const passwordElement = useRef();
 
+  // handel login/signup form toggle
+
   const handelSignSignupToggle = () => {
     dispatch(loginSignupToggle());
   };
+
+  // handel login/signup authuntication button
 
   const handelSigninSignupButton = () => {
     const email = emailElement.current.value;
@@ -30,6 +36,8 @@ function Form() {
     // login in logic
     else {
       login(email, password, dispatch);
+      emailElement.current.value = "";
+      passwordElement.current.value = "";
     }
   };
 
@@ -47,7 +55,7 @@ function Form() {
           type="text"
           ref={userNameElement}
           alt="Name "
-          placeholder="Enter UserName here..."
+          placeholder="example5678"
           className="bg-transparent text-white bg-opacity-80  py-3 px-2 outline-none rounded-lg border border-gray-400"
         />
       )}
@@ -55,17 +63,17 @@ function Form() {
         type="email"
         alt="Email "
         ref={emailElement}
-        placeholder="Enter Email here..."
+        placeholder="example123@gmail.com"
         className="bg-transparent text-white bg-opacity-80  py-3 px-2 outline-none rounded-lg border border-gray-400"
       />
       <input
         type="password"
         alt="Password"
         ref={passwordElement}
-        placeholder="Enter Password here..."
+        placeholder="Example@1234"
         className="bg-transparent text-white bg-opacity-80  py-3 px-2 outline-none rounded-lg border border-gray-400"
       />
-      <h1 className="text-white text-xl">{message}</h1>
+      <h1 className="text-red-900 font-bold text-xl py-2">{message}</h1>
       <button
         className="text-white bg-[#C11119] py-2 text-xl rounded-md capitalize"
         onClick={handelSigninSignupButton}
