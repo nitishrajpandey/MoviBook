@@ -1,4 +1,5 @@
-import logo3 from "./logo3.png"
+import logo from "./logo.png"
+import logo1 from "./logo1.png"
 import backgroundPoster from "./backgroundPoster.jpg"
 
-export { logo3, backgroundPoster }
+export { logo, backgroundPoster, logo1 }

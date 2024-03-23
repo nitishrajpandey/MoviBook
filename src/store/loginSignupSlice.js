@@ -4,10 +4,17 @@ const loginSignupSlice = createSlice(
     {
         name: "loginSignup",
         initialState: {
+            userData: null,
             loginSignupStatus: false,
             message: null
         },
         reducers: {
+            addUser: (state, action) => {
+                state.userData = action.payload
+            },
+            removeUser: (state) => {
+                state.userData = null
+            },
             loginSignupToggle: (state, action) => {
                 state.loginSignupStatus = !state.loginSignupStatus
             },
@@ -18,6 +25,6 @@ const loginSignupSlice = createSlice(
     }
 )
 
-export const { loginSignupToggle, addMessages } = loginSignupSlice.actions
+export const { loginSignupToggle, addMessages, addUser, removeUser } = loginSignupSlice.actions
 
 export default loginSignupSlice.reducer

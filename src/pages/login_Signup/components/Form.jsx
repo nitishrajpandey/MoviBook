@@ -1,21 +1,13 @@
 import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addMessages,
-  loginSignupToggle,
-} from "../../../store/loginSignupSlice";
-import { checkValidData } from "../formValidate/validate";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
-import { auth } from "../../../firebase/firebase";
+import { loginSignupToggle } from "../../../store/loginSignupSlice";
+import { login, signup } from "../../../firebase/authService";
 
 function Form() {
   const toggleSignInSignup = useSelector(
     (state) => state.loginSignup.loginSignupStatus
   );
-  const message = useSelector((state) => state.loginSignup.message); // Change variable name to 'message'
+  const message = useSelector((state) => state.loginSignup.message);
   const dispatch = useDispatch();
   const userNameElement = useRef();
   const emailElement = useRef();
@@ -26,62 +18,18 @@ function Form() {
   };
 
   const handelSigninSignupButton = () => {
+    const email = emailElement.current.value;
+    const password = passwordElement.current.value;
+
     // signup logic
     if (toggleSignInSignup) {
-      const message = checkValidData(
-        // Change variable name to 'message'
-        emailElement.current.value,
-        passwordElement.current.value,
-        userNameElement.current.value
-      );
-      dispatch(addMessages(message));
-      console.log(message);
-
-      if (message) return;
-
-      createUserWithEmailAndPassword(
-        auth,
-        emailElement.current.value,
-        passwordElement.current.value
-      )
-        .then((userCredential) => {
-          // Signed up
-          const user = userCredential.user;
-          console.log(user);
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          dispatch(addMessages(errorCode + " - " + errorMessage));
-        });
+      const username = userNameElement.current.value;
+      signup(email, password, username, dispatch);
     }
 
-    // sign in logic
+    // login in logic
     else {
-      const message = checkValidData(
-        // Change variable name to 'message'
-        emailElement.current.value,
-        passwordElement.current.value
-      );
-      console.log(message);
-      dispatch(addMessages(message));
-
-      if (message) return;
-      signInWithEmailAndPassword(
-        auth,
-        emailElement.current.value,
-        passwordElement.current.value
-      )
-        .then((userCredential) => {
-          // Signed in
-          const user = userCredential.user;
-          console.log(user);
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          dispatch(addMessages(errorCode + " - " + errorMessage));
-        });
+      login(email, password, dispatch);
     }
   };
 
@@ -92,7 +40,7 @@ function Form() {
       className="rounded-md  flex flex-col max-w-[400px] w-full p-5 gap-5 bg-black bg-opacity-80"
     >
       <h1 className="font-bold text-3xl text-white ">
-        {toggleSignInSignup ? "sign out" : "sign in"}
+        {toggleSignInSignup ? "Create Account" : "Sign in"}
       </h1>
       {toggleSignInSignup && (
         <input
@@ -117,8 +65,7 @@ function Form() {
         placeholder="Enter Password here..."
         className="bg-transparent text-white bg-opacity-80  py-3 px-2 outline-none rounded-lg border border-gray-400"
       />
-      <h1 className="text-white text-xl">{message}</h1>{" "}
-      {/* Change variable name to 'message' */}
+      <h1 className="text-white text-xl">{message}</h1>
       <button
         className="text-white bg-[#C11119] py-2 text-xl rounded-md capitalize"
         onClick={handelSigninSignupButton}
