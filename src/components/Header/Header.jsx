@@ -24,7 +24,7 @@ function Header() {
 
   return (
     <>
-      <div className="absolute z-20 top-0 inset-0  bg-black bg-opacity-30 w-full h-[80px] flex justify-center">
+      <div className="absolute z-20 top-0 inset-0  bg-black bg-opacity-30 w-full h-[80px]  flex justify-center">
         <ContentWrapper>
           <div className="  h-f  w-full flex justify-between">
             <div className=" flex items-center gap-3">
@@ -50,7 +50,6 @@ function Header() {
               <div className="flex items-center gap-5 ">
                 <ul className="text-white flex gap-5  text-xl">
                   <li>Home</li>
-                  <li>Movie</li>
                 </ul>
                 <div>
                   <button

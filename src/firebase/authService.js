@@ -17,7 +17,7 @@ export const signup = async (email, password, username, dispatch) => {
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
-        console.log(user);
+
         // dispatch any sussucess action
     } catch (error) {
         const errorCode = error.code;
