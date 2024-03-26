@@ -14,6 +14,7 @@ function BannerText() {
         <span className="w-full flex justify-center mt-5 md:mt-8">
           <input
             type="text"
+            placeholder="Search for a movie or tv show..."
             className="w-[600px] text-xl py-2 ss:py-3 px-3 ss:px-5 rounded-l-2xl outline-none"
           />
           <button className=" py-2 ss:py-3 px-3 ss:px-5 font-semibold rounded-r-2xl bg-gradient-to-br from-orange-400 to-pink-600 text-white text-xl">
