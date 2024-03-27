@@ -20,7 +20,6 @@ const trandingSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchTrandingApi.fulfilled, (state, action) => {
-                console.log(action);
                 state.trandingCollection = action.payload.results
             })
     }

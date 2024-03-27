@@ -4,6 +4,7 @@ import heroBannerPosterReducer from "./homeSlices/heroBannerPosterSlice";
 import headerReducer from "./navbar/headerSlice";
 import initialReducer from "./intialRequiredSlice/initialSlice";
 import trandingReducer from "./homeSlices/trandingSlice";
+import popularReducer from "./homeSlices/popularSlice";
 
 const store = configureStore({
     reducer: {
@@ -11,7 +12,8 @@ const store = configureStore({
         header: headerReducer,
         initial: initialReducer,
         bgBannerPoster: heroBannerPosterReducer,
-        tranding: trandingReducer
+        tranding: trandingReducer,
+        popular: popularReducer
     }
 })
 
