@@ -2,6 +2,7 @@ import React from "react";
 import HeroBanner from "./components/heroBanner/HeroBanner";
 import TrendingMovies from "./components/trendingMovies/TrendingMovies";
 import PopularSection from "./components/popular/PopularSection";
+import TopRated from "./components/topRated/TopRated";
 
 function Home() {
   return (
@@ -14,6 +15,9 @@ function Home() {
       </div>
       <div className="mt-20">
         <PopularSection />
+      </div>
+      <div className="mt-20">
+        <TopRated />
       </div>
     </div>
   );

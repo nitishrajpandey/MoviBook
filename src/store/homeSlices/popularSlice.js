@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchDataFromTMBD } from "../../api/api";
 export const fetchPopularApi = createAsyncThunk("fetchPopularApi", async (url) => {
-    console.log(url);
+
     const data = await fetchDataFromTMBD(url)
     return data
 })
