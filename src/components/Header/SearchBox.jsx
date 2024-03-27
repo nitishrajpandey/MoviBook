@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ContentWrapper from "../contentWrapper/ContentWrapper";
 import { IoClose } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
-import { closeToggle } from "../../store/headerSlice";
+import { closeToggle } from "../../store/navbar/headerSlice";
 
 function SearchBox() {
   const dispatch = useDispatch();

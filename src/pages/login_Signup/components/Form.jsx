@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loginSignupToggle } from "../../../store/loginSignupSlice";
+import { loginSignupToggle } from "../../../store/loginSetup/loginSignupSlice";
 import { login, signup } from "../../../firebase/authService";
 
 function Form() {

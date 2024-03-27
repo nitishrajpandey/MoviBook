@@ -1,41 +1,66 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import ContentWrapper from "../../../../components/contentWrapper/ContentWrapper";
+import { useDispatch, useSelector } from "react-redux";
+
+import {
+  fetchTrandingApi,
+  switchTab,
+} from "../../../../store/homeSlices/trandingSlice";
+import CarouselMoviesCard from "../../../../components/carousel/CarouselMoviesCard";
 
 function TrendingMovies() {
+  const dispatch = useDispatch();
+  const trandingDayValue = useSelector(
+    (state) => state.tranding?.trandingCollection
+  );
+  const posterUrl = useSelector((state) => state.initial?.url?.poster);
+  const activeTab = useSelector((state) => state.tranding.currentTab);
+
+  useEffect(() => {
+    dispatch(
+      fetchTrandingApi(
+        activeTab === "day" ? "/trending/movie/day" : "/trending/movie/week"
+      )
+    );
+  }, [activeTab, dispatch]);
+
+  const handleTabChange = (tab) => {
+    dispatch(switchTab(tab));
+  };
+
   return (
     <div>
-      Tranding Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo,
-      repellendus tenetur eum mollitia explicabo magni aperiam saepe asperiores
-      doloremque aspernatur vero a perferendis blanditiis laudantium fugit
-      temporibus ad veritatis rerum et! Velit reiciendis molestias aliquid
-      voluptatibus perferendis tempore mollitia animi laboriosam quae!
-      Assumenda, accusantium? Neque distinctio enim quos nisi dolor quisquam
-      ipsum, vitae necessitatibus, iusto velit atque, explicabo saepe eos natus.
-      Molestiae hic maxime commodi ea optio aut pariatur facere omnis
-      accusantium? Enim natus corporis ea assumenda sequi, nulla ad rerum
-      eveniet molestias eaque beatae quaerat atque, adipisci accusantium
-      consequuntur distinctio dicta voluptatum architecto quasi libero aliquid
-      accusamus aliquam maxime. Provident est similique ut, inventore nesciunt
-      dolores! Accusantium fugiat quod necessitatibus, nobis odit est obcaecati
-      temporibus eum consequatur blanditiis hic voluptate earum perferendis
-      repudiandae alias suscipit impedit doloribus animi inventore quas tempore
-      aliquid ipsa? Voluptatibus laboriosam odit animi, quam maiores corporis
-      soluta neque? Sequi rem quibusdam magni quia optio commodi impedit veniam?
-      A, nobis inventore. Commodi eaque iusto laborum natus reprehenderit hic,
-      dolorem ab at voluptas repellendus blanditiis nemo consectetur dolores
-      temporibus libero ipsam eveniet optio consequatur vero quia.
-      Necessitatibus, a. Iusto minima quia quis perspiciatis cupiditate
-      voluptatum sit explicabo enim voluptatibus consectetur aperiam nesciunt,
-      cumque commodi, officia ut veritatis! Sit corrupti exercitationem eum odit
-      consequatur animi fugit nulla? Eveniet facere repellat modi explicabo est
-      nihil rem. Dolorum enim rerum voluptatem, blanditiis eos ipsa minus et ea
-      numquam. Velit itaque laborum sapiente sit! Veniam at dolor aperiam
-      aliquid, quaerat dolorem id odit corrupti, cumque hic quis magni ut?
-      Repellendus earum itaque enim eaque est omnis velit accusamus non.
-      Corrupti hic quas sit fugiat? Porro ad voluptatibus alias facilis quaerat
-      praesentium in, accusamus natus. Eligendi facilis, saepe odit sint odio
-      corporis praesentium exercitationem quasi reprehenderit nulla laboriosam
-      explicabo nesciunt blanditiis, ex incidunt debitis illo harum nihil sunt
-      quia expedita. Consequatur, ad!
+      <ContentWrapper>
+        <div className="flex justify-between py-5">
+          <div>
+            <h1 className="text-white text-2xl font-semibold">Tranding</h1>
+          </div>
+
+          <div className="bg-white px-1 py-1 rounded-3xl flex gap-2 items-center ">
+            <button
+              className={`px-4 xs:px-8 py-1 rounded-2xl  ${
+                activeTab === "day"
+                  ? "bg-gradient-to-br from-orange-400 to-pink-600 text-white"
+                  : ""
+              }`}
+              onClick={() => handleTabChange("day")}
+            >
+              Day
+            </button>
+            <button
+              className={`px-4 xs:px-8 py-1 rounded-3xl ${
+                activeTab === "week"
+                  ? "bg-gradient-to-br from-orange-400 to-pink-600 text-white"
+                  : ""
+              }`}
+              onClick={() => handleTabChange("week")}
+            >
+              Week
+            </button>
+          </div>
+        </div>
+        <CarouselMoviesCard data={trandingDayValue} posterUrl={posterUrl} />
+      </ContentWrapper>
     </div>
   );
 }

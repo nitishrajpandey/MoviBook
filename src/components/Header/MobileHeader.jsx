@@ -2,7 +2,7 @@ import React from "react";
 import { IoIosSearch } from "react-icons/io";
 import { IoMenu } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
-import { closeToggle, hamburgerToggle } from "../../store/headerSlice";
+import { closeToggle, hamburgerToggle } from "../../store/navbar/headerSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 function MobileHeader() {

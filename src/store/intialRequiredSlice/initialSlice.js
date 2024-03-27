@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { fetchDataFromTMBD } from "../api/api";
+import { fetchDataFromTMBD } from "../../api/api";
 
 export const fetchImageUrls = createAsyncThunk("fetchImageUrls", async (url) => {
 

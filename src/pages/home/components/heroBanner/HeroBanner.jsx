@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { fetchBgPosterApi } from "../../../../store/heroBannerPosterSlice";
+import { fetchBgPosterApi } from "../../../../store/homeSlices/heroBannerPosterSlice";
 import BannerPoster from "./BannerPoster";
 import BannerText from "./BannerText";
 

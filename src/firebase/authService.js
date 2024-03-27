@@ -1,6 +1,6 @@
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { checkValidData } from "../pages/login_Signup/formValidate/validate"
-import { addMessages, addUser, removeUser } from "../store/loginSignupSlice";
+import { addMessages, addUser, removeUser } from "../store/loginSetup/loginSignupSlice";
 import { auth } from "./firebase";
 
 

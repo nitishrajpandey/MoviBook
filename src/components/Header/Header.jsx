@@ -8,7 +8,7 @@ import {
   handelAuthStateChanged,
   signOutUser,
 } from "../../firebase/authService";
-import { closeToggle } from "../../store/headerSlice";
+import { closeToggle } from "../../store/navbar/headerSlice";
 import "./style.css";
 import MobileHeader from "./MobileHeader";
 import SearchBox from "./SearchBox";
