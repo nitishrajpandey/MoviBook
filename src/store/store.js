@@ -6,6 +6,7 @@ import initialReducer from "./intialRequiredSlice/initialSlice";
 import trandingReducer from "./homeSlices/trandingSlice";
 import popularReducer from "./homeSlices/popularSlice";
 import topRatedReducer from "./homeSlices/topRatedSlice";
+import upcomingReducer from "./homeSlices/upcomingSlice";
 
 const store = configureStore({
     reducer: {
@@ -15,7 +16,8 @@ const store = configureStore({
         bgBannerPoster: heroBannerPosterReducer,
         tranding: trandingReducer,
         popular: popularReducer,
-        topRated: topRatedReducer
+        topRated: topRatedReducer,
+        upcoming: upcomingReducer
     }
 })
 

@@ -13,6 +13,7 @@ import "./style.css";
 import MobileHeader from "./MobileHeader";
 import SearchBox from "./SearchBox";
 import Hamburger from "./Hamburger";
+import { FaSignOutAlt } from "react-icons/fa";
 
 function Header() {
   const navigate = useNavigate();
@@ -85,10 +86,10 @@ function Header() {
                   </span>
                   <div>
                     <button
-                      className="px-3 py-2 bg-gradient-to-br from-orange-400 to-pink-600 text-white rounded-xl font-bold"
+                      className="px-3 py-3 bg-gradient-to-br from-orange-400 to-pink-600 text-white rounded-full font-bold"
                       onClick={handelSignOut}
                     >
-                      Sign-out
+                      <FaSignOutAlt />
                     </button>
                   </div>
                 </div>
