@@ -10,7 +10,8 @@ const popularSlice = createSlice({
     name: "popular",
     initialState: {
         popularCollection: [],
-        currentTab: "movie"
+        currentTab: "movie",
+        loding: false
     },
     reducers: {
         switchTab: (state, action) => {
@@ -20,7 +21,11 @@ const popularSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchPopularApi.fulfilled, (state, action) => {
-                state.popularCollection = action.payload?.results
+                state.popularCollection = action.payload?.results,
+                    state.loding = false
+            })
+            .addCase(fetchPopularApi.pending, (state, action) => {
+                state.loding = true
             })
     }
 })

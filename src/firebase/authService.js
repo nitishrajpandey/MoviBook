@@ -40,7 +40,7 @@ export const login = async (email, password, dispatch) => {
 
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
-        console.log(user);
+
 
     } catch (error) {
         // const errorCode = error.code;

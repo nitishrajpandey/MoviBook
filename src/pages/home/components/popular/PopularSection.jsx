@@ -7,12 +7,14 @@ import {
 
 import ContentWrapper from "../../../../components/contentWrapper/ContentWrapper";
 import CarouselMoviesCard from "../../../../components/carousel/CarouselMoviesCard";
+import Loding from "../../../../components/LodingLoder/Loding";
 
 function PopularSection() {
   const dispatch = useDispatch();
+  const loding = useSelector((state) => state.popular?.loding);
   const posterUrl = useSelector((state) => state.initial?.url?.poster);
   const popularData = useSelector((state) => state.popular?.popularCollection);
-  console.log(popularData);
+
   const activeTab = useSelector((state) => state.popular?.currentTab);
   useEffect(() => {
     dispatch(
@@ -57,7 +59,11 @@ function PopularSection() {
             </button>
           </div>
         </div>
-        <CarouselMoviesCard data={popularData} posterUrl={posterUrl} />
+        {loding ? (
+          <Loding />
+        ) : (
+          <CarouselMoviesCard data={popularData} posterUrl={posterUrl} />
+        )}
       </ContentWrapper>
     </div>
   );

@@ -6,9 +6,11 @@ import {
   fetchUpcomingApi,
   switchTab,
 } from "../../../../store/homeSlices/upcomingSlice";
+import Loding from "../../../../components/LodingLoder/Loding";
 
 function Upcoming() {
   const dispatch = useDispatch();
+  const loding = useSelector((state) => state.upcoming?.loding);
   const activeTab = useSelector((state) => state.upcoming?.currentTab);
   const posterUrl = useSelector((state) => state.initial?.url?.poster);
   const upcomingData = useSelector(
@@ -57,7 +59,11 @@ function Upcoming() {
             </button>
           </div>
         </div>
-        <CarouselMoviesCard data={upcomingData} posterUrl={posterUrl} />
+        {loding ? (
+          <Loding />
+        ) : (
+          <CarouselMoviesCard data={upcomingData} posterUrl={posterUrl} />
+        )}
       </ContentWrapper>
     </div>
   );

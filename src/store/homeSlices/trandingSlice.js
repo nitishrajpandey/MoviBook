@@ -10,7 +10,8 @@ const trandingSlice = createSlice({
     name: "tranding",
     initialState: {
         trandingCollection: [],
-        currentTab: "day"
+        currentTab: "day",
+        loding: false
     },
     reducers: {
         switchTab: (state, action) => {
@@ -20,7 +21,11 @@ const trandingSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchTrandingApi.fulfilled, (state, action) => {
-                state.trandingCollection = action.payload.results
+                state.trandingCollection = action.payload.results,
+                    state.loding = false
+            })
+            .addCase(fetchTrandingApi.pending, (state, action) => {
+                state.loding = true
             })
     }
 })

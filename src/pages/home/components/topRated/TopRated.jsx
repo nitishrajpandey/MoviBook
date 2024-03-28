@@ -6,9 +6,11 @@ import {
   fetchTopRatedApi,
   switchTab,
 } from "../../../../store/homeSlices/topRatedSlice";
+import Loding from "../../../../components/LodingLoder/Loding";
 
 function TopRated() {
   const dispatch = useDispatch();
+  const loding = useSelector((state) => state.topRated?.loding);
   const activeTab = useSelector((state) => state.topRated?.currentTab);
   const posterUrl = useSelector((state) => state.initial?.url?.poster);
   const topRatedData = useSelector(
@@ -58,7 +60,11 @@ function TopRated() {
             </button>
           </div>
         </div>
-        <CarouselMoviesCard data={topRatedData} posterUrl={posterUrl} />
+        {loding ? (
+          <Loding />
+        ) : (
+          <CarouselMoviesCard data={topRatedData} posterUrl={posterUrl} />
+        )}
       </ContentWrapper>
     </div>
   );

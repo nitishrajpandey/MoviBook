@@ -1,6 +1,5 @@
 import React from "react";
 import ContentWrapper from "../contentWrapper/ContentWrapper";
-import { FaFacebookF } from "react-icons/fa";
 import { GrInstagram } from "react-icons/gr";
 import { FaTwitter } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
