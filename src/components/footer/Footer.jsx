@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <div className="mt-10 py-10 bg-[#020C1B]">
+    <div className=" py-10 bg-[#020C1B]">
       <ContentWrapper>
         <div className="flex flex-col items-center justify-center">
           <div className="flex flex-col justify-center items-center ss:flex-row gap-3 ss:gap-5 text-white py-5 text-[16px] cursor-pointer ">
