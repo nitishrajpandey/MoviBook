@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/Header/Header";
 import { useDispatch } from "react-redux";
 import { fetchImageUrls } from "./store/intialRequiredSlice/initialSlice";
+import Footer from "./components/footer/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<LoginSignup />} />
         <Route path="/home" element={<Home />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
