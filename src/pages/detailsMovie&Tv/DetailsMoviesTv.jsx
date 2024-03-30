@@ -80,11 +80,21 @@ import {
   resetDetails,
 } from "../../store/detailsMovieTvSlice/detailsMovieTvSlice";
 import DetailsBanner from "./components/detailsBanner/DetailsBanner";
+import TopCast from "./components/topCast/TopCast";
+import ContentWrapper from "../../components/contentWrapper/ContentWrapper";
+import Video from "./components/videoDetails/Video";
+import { logo } from "../../assets";
 
 function DetailsMoviesTv() {
   const id = useSelector((state) => state.detailsMovieTv?.id);
   const movieType = useSelector((state) => state.detailsMovieTv?.mediaType);
   const dispatch = useDispatch();
+
+  const detailsvalue = useSelector(
+    (state) => state.detailsMovieTv?.moviesTvDetails
+  );
+
+  console.log(detailsvalue);
 
   useEffect(() => {
     // Reset details whenever id or movieType changes
@@ -98,9 +108,11 @@ function DetailsMoviesTv() {
   }, [id, movieType, dispatch]);
 
   return (
-    <div className="">
+    <ContentWrapper>
       <DetailsBanner />
-    </div>
+      <TopCast />
+      <Video />
+    </ContentWrapper>
   );
 }
 

@@ -1,7 +1,34 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 function BgBanner() {
-  return <div>BgBanner</div>;
+  const detailsvalue = useSelector(
+    (state) => state.detailsMovieTv?.moviesTvDetails
+  );
+  const BannerUrl = useSelector((state) => state.initial?.url?.backdrop);
+  const bgBanner = BannerUrl + detailsvalue?.backdrop_path;
+  return (
+    <>
+      {" "}
+      <div className=" absolute overflow-hidden bg-cover opacity-20 bg-center  h-full w-full   ">
+        {detailsvalue && (
+          <img
+            src={bgBanner}
+            className="  object-cover object-center h-full w-full   "
+            alt=""
+          />
+        )}
+
+        <div
+          className="absolute bottom-0 bg-transparent inset-0   w-full h-full"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(4, 21, 45, 0) 5%, #04152d 100%)",
+          }}
+        ></div>
+      </div>
+    </>
+  );
 }
 
 export default BgBanner;
