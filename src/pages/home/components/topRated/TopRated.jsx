@@ -63,7 +63,11 @@ function TopRated() {
         {loding ? (
           <Loding />
         ) : (
-          <CarouselMoviesCard data={topRatedData} posterUrl={posterUrl} />
+          <CarouselMoviesCard
+            data={topRatedData}
+            posterUrl={posterUrl}
+            movieType={activeTab}
+          />
         )}
       </ContentWrapper>
     </div>

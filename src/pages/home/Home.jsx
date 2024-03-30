@@ -11,16 +11,16 @@ function Home() {
       <div className="w-full">
         <HeroBanner />
       </div>
-      <div className="mt-20">
+      <div className="my-14">
         <TrendingMovies />
       </div>
-      <div className="mt-20">
+      <div className="my-14">
         <PopularSection />
       </div>
-      <div className="mt-20">
+      <div className="my-14">
         <TopRated />
       </div>
-      <div className="mt-20">
+      <div className="my-14">
         <Upcoming />
       </div>
     </div>

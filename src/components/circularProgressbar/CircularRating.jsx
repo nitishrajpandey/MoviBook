@@ -4,7 +4,7 @@ import "react-circular-progressbar/dist/styles.css";
 
 function CircularRating({ rating }) {
   return (
-    <div className="w-[50px] absolute  ">
+    <div className="  ">
       <CircularProgressbar
         value={rating}
         maxValue={10}
@@ -15,7 +15,7 @@ function CircularRating({ rating }) {
           backgroundColor: "white",
           textColor: "black",
         })}
-        className="rounded-full bg-white "
+        className="rounded-full  bg-white "
       />
       ;
     </div>

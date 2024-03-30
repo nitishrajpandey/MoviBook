@@ -6,6 +6,7 @@ import Header from "./components/Header/Header";
 import { useDispatch } from "react-redux";
 import { fetchImageUrls } from "./store/intialRequiredSlice/initialSlice";
 import Footer from "./components/footer/Footer";
+import DetailsMoviesTv from "./pages/detailsMovie&Tv/DetailsMoviesTv";
 
 function App() {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginSignup />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/details/:id" element={<DetailsMoviesTv />} />
       </Routes>
       <Footer />
     </BrowserRouter>

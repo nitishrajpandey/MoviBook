@@ -62,7 +62,11 @@ function PopularSection() {
         {loding ? (
           <Loding />
         ) : (
-          <CarouselMoviesCard data={popularData} posterUrl={posterUrl} />
+          <CarouselMoviesCard
+            data={popularData}
+            posterUrl={posterUrl}
+            movieType={activeTab}
+          />
         )}
       </ContentWrapper>
     </div>

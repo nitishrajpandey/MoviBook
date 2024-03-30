@@ -6,12 +6,30 @@ import Img from "../LazyImageLoder/Img";
 import dayjs from "dayjs";
 import { noPoster } from "../../assets/index";
 import CircularRating from "../circularProgressbar/CircularRating";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {
+  addId,
+  mediaType,
+} from "../../store/detailsMovieTvSlice/detailsMovieTvSlice";
 
-function CarouselMoviesCard({ data, posterUrl }) {
+function CarouselMoviesCard({ data, posterUrl, movieType }) {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handelCardClicked = (id) => {
+    navigate(`/details/${id}`);
+    dispatch(addId(id));
+    dispatch(mediaType(movieType));
+  };
   return (
     <Carousel responsive={responsive}>
       {data.map((item) => (
-        <div key={item.id} className="xs:pr-5  ">
+        <div
+          key={item.id}
+          className="xs:pr-5  "
+          onClick={() => handelCardClicked(item.id)}
+        >
           <div className="  aspect-[1/1.5]">
             {item.poster_path ? (
               <Img
@@ -23,7 +41,9 @@ function CarouselMoviesCard({ data, posterUrl }) {
             )}
           </div>
           <div className=" relative -top-10 left-2">
-            <CircularRating rating={item.vote_average.toFixed(1)} />
+            <span className="absolute w-[50px]">
+              <CircularRating rating={item.vote_average.toFixed(1)} />
+            </span>
           </div>
 
           <div className="flex flex-col w-[90%] mt-5 gap-1 ">

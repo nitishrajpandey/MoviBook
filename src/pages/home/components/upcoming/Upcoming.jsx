@@ -62,7 +62,11 @@ function Upcoming() {
         {loding ? (
           <Loding />
         ) : (
-          <CarouselMoviesCard data={upcomingData} posterUrl={posterUrl} />
+          <CarouselMoviesCard
+            data={upcomingData}
+            posterUrl={posterUrl}
+            movieType={activeTab}
+          />
         )}
       </ContentWrapper>
     </div>

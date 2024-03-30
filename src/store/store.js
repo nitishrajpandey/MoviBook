@@ -7,6 +7,8 @@ import trandingReducer from "./homeSlices/trandingSlice";
 import popularReducer from "./homeSlices/popularSlice";
 import topRatedReducer from "./homeSlices/topRatedSlice";
 import upcomingReducer from "./homeSlices/upcomingSlice";
+import detailsMovieTvReducer from "./detailsMovieTvSlice/detailsMovieTvSlice";
+
 
 const store = configureStore({
     reducer: {
@@ -17,7 +19,8 @@ const store = configureStore({
         tranding: trandingReducer,
         popular: popularReducer,
         topRated: topRatedReducer,
-        upcoming: upcomingReducer
+        upcoming: upcomingReducer,
+        detailsMovieTv: detailsMovieTvReducer
     }
 })
 

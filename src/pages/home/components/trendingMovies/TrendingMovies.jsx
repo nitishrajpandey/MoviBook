@@ -64,7 +64,11 @@ function TrendingMovies() {
         {loding ? (
           <Loding />
         ) : (
-          <CarouselMoviesCard data={trandingDayValue} posterUrl={posterUrl} />
+          <CarouselMoviesCard
+            data={trandingDayValue}
+            posterUrl={posterUrl}
+            movieType={"movie"}
+          />
         )}
       </ContentWrapper>
     </div>
