@@ -8,6 +8,7 @@ import popularReducer from "./homeSlices/popularSlice";
 import topRatedReducer from "./homeSlices/topRatedSlice";
 import upcomingReducer from "./homeSlices/upcomingSlice";
 import detailsMovieTvReducer from "./detailsMovieTvSlice/detailsMovieTvSlice";
+import searchReducer from "./searchSlice/searchSlice";
 
 
 
@@ -21,7 +22,8 @@ const store = configureStore({
         popular: popularReducer,
         topRated: topRatedReducer,
         upcoming: upcomingReducer,
-        detailsMovieTv: detailsMovieTvReducer
+        detailsMovieTv: detailsMovieTvReducer,
+        search: searchReducer
 
     }
 })

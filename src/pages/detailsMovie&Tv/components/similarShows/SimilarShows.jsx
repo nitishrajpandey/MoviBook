@@ -7,9 +7,8 @@ function SimilarShows() {
   const similarShows = useSelector(
     (state) => state.detailsMovieTv?.similarShowsCollection?.results
   );
-  console.log(similarShows);
+
   const posterUrl = useSelector((state) => state.initial?.url?.poster);
-  console.log(similarShows);
 
   const type = useSelector((state) => state.detailsMovieTv?.mediaType);
 

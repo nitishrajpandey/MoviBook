@@ -8,7 +8,6 @@ function Recommendations() {
     (state) => state.detailsMovieTv?.recommendationsShowsCollection?.results
   );
 
-  console.log(recommendationsShows);
   const posterUrl = useSelector((state) => state.initial?.url?.poster);
 
   const type = useSelector((state) => state.detailsMovieTv?.mediaType);

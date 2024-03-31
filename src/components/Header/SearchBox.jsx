@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ContentWrapper from "../contentWrapper/ContentWrapper";
 import { IoClose } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { closeToggle } from "../../store/navbar/headerSlice";
+import { addKeyWord } from "../../store/searchSlice/searchSlice";
+import { useNavigate } from "react-router-dom";
 
 function SearchBox() {
   const dispatch = useDispatch();
+  const inputElement = useRef();
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -14,6 +18,15 @@ function SearchBox() {
 
   const handleCloseSearch = () => {
     dispatch(closeToggle());
+  };
+
+  const handelOnKeyDown = (event) => {
+    if (inputElement.current.value === "") {
+    } else if (event.key === "Enter") {
+      navigate(`/search/${inputElement.current.value}`);
+      dispatch(addKeyWord(inputElement.current.value));
+      inputElement.current.value = "";
+    }
   };
 
   return (
@@ -28,6 +41,8 @@ function SearchBox() {
             type="text"
             placeholder="Search for a movie or tv show..."
             className="w-full border-none outline-none font-medium"
+            ref={inputElement}
+            onKeyDown={handelOnKeyDown}
           />
           <span>
             <IoClose className="text-2xl" onClick={handleCloseSearch} />

@@ -1,7 +1,31 @@
-import React from "react";
+import React, { useRef } from "react";
 import ContentWrapper from "../../../../components/contentWrapper/ContentWrapper";
+import { useDispatch, useSelector } from "react-redux";
+import { addKeyWord } from "../../../../store/searchSlice/searchSlice";
+import { useNavigate } from "react-router-dom";
 
 function BannerText() {
+  const dispatch = useDispatch();
+  const inputElement = useRef();
+  const navigate = useNavigate();
+
+  const handelOnclickSearch = () => {
+    if (inputElement.current.value) {
+      navigate(`/search/${inputElement.current.value}`);
+      dispatch(addKeyWord(inputElement.current.value));
+      inputElement.current.value = "";
+    }
+  };
+
+  const handelOnKeyDown = (event) => {
+    if (inputElement.current.value === "") {
+    } else if (event.key === "Enter") {
+      navigate(`/search/${inputElement.current.value}`);
+      dispatch(addKeyWord(inputElement.current.value));
+      inputElement.current.value = "";
+    }
+  };
+
   return (
     <ContentWrapper>
       <div className="  flex flex-col  items-center justify-center px-5 ">
@@ -16,8 +40,13 @@ function BannerText() {
             type="text"
             placeholder="Search for a movie or tv show..."
             className="w-[600px] text-xl py-2 ss:py-3 px-3 ss:px-5 rounded-l-2xl outline-none"
+            ref={inputElement}
+            onKeyDown={handelOnKeyDown}
           />
-          <button className=" py-2 ss:py-3 px-3 ss:px-5 font-semibold rounded-r-2xl bg-gradient-to-br from-orange-400 to-pink-600 text-white text-xl">
+          <button
+            className=" py-2 ss:py-3 px-3 ss:px-5 font-semibold rounded-r-2xl bg-gradient-to-br from-orange-400 to-pink-600 text-white text-xl"
+            onClick={handelOnclickSearch}
+          >
             Search
           </button>
         </span>

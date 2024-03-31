@@ -9,10 +9,6 @@ function BgBanner() {
   const BannerUrl = useSelector((state) => state.initial?.url?.backdrop);
   const bgBanner = BannerUrl + detailsvalue?.backdrop_path;
 
-  console.log(detailsvalue?.backdrop_path);
-
-  console.log(bgBanner);
-
   if (!detailsvalue) {
     return <div></div>;
   }

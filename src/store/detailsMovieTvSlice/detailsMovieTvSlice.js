@@ -25,13 +25,13 @@ export const fetchMovieTvCreditsApi = createAsyncThunk("fetchMovieTvCreditsApi",
 });
 
 export const fetchSimilarShowsDataApi = createAsyncThunk("fetchSimilarShowsDataApi", async (url) => {
-    console.log(url);
+
     const data = await fetchDataFromTMBD(url)
     return data
 })
 
 export const fetchRecommendationsShowsDataApi = createAsyncThunk("fetchRecommendationsShowsDataApi", async (url) => {
-    console.log(url);
+
     const data = await fetchDataFromTMBD(url)
     return data
 })

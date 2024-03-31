@@ -1,3 +1,0 @@
-- LoginSignup page
-  -- header
-  --loginSignup
