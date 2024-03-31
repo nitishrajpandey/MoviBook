@@ -23,7 +23,7 @@ function TopCast() {
 
   return (
     <div>
-      <div className="pt-4 pb-10">
+      <div className=" pb-10">
         <h1 className="text-white font-semibold text-3xl">Top Cast</h1>
       </div>
 

@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import ContentWrapper from "../../../../components/contentWrapper/ContentWrapper";
 import dayjs from "dayjs";
 import CircularRating from "../../../../components/circularProgressbar/CircularRating";
+import { noPoster } from "../../../../assets";
 
 function BannerDetailsContents() {
   const detailsvalue = useSelector(
@@ -39,9 +40,15 @@ function BannerDetailsContents() {
       <div className=" -z-50">
         <ContentWrapper>
           <div className="relative py-[80px]   flex break1:flex-row flex-col gap-5">
-            <div className=" break1:max-w-[350px] h-full rounded-2xl ">
-              <img src={bgPoster} alt="" className="rounded-2xl " />
-            </div>
+            {detailsvalue?.poster_path ? (
+              <div className=" break1:max-w-[350px] h-full rounded-2xl ">
+                <img src={bgPoster} alt="" className="rounded-2xl " />
+              </div>
+            ) : (
+              <div className=" break1:max-w-[350px] h-full rounded-2xl ">
+                <img src={noPoster} alt="" className="rounded-2xl " />
+              </div>
+            )}
 
             {/* descrption */}
             <div className="w-[100%]">
@@ -57,7 +64,7 @@ function BannerDetailsContents() {
                 </h1>
               </div>
               <div className="">
-                <h3 className="text-gray-600 font-semibold py-3 text-xl">
+                <h3 className="text-gray-400 italic font-semibold py-3 text-xl">
                   {detailsvalue?.tagline}
                 </h3>
               </div>
@@ -77,19 +84,19 @@ function BannerDetailsContents() {
                     rating={detailsvalue?.vote_average.toFixed(1)}
                   />
                 </div>
-                <div className="text-white">
+                {/* <div className="text-white">
                   <h1>watch trailer</h1>
-                </div>
+                </div> */}
               </div>
               <div className="text-white py-3">
                 <h2 className="text-3xl py-3">Overview</h2>
                 <p>{detailsvalue?.overview}</p>
               </div>
-              <div className="py-3 border-b border-gray-800">
+              <div className="py-3 border-dotted border-b border-gray-600">
                 <div className="text-white flex gap-5 justify-evenly">
                   <span className="flex flex-col break2:flex-row break1:flex-col break3:flex-row gap-2">
                     Status :{" "}
-                    <span className="text-gray-600 font-semibold">
+                    <span className="text-gray-500 font-semibold">
                       {detailsvalue?.status}
                     </span>
                   </span>
@@ -97,7 +104,7 @@ function BannerDetailsContents() {
                   {detailsvalue?.release_date && (
                     <span className="flex flex-col break2:flex-row break1:flex-col break3:flex-row gap-2">
                       Release Date :
-                      <span className="text-gray-600 font-semibold">
+                      <span className="text-gray-500 font-semibold">
                         {detailsvalue?.release_date}
                       </span>
                     </span>
@@ -106,7 +113,7 @@ function BannerDetailsContents() {
                   {detailsvalue?.runtime && (
                     <span className="flex flex-col break2:flex-row break1:flex-col break3:flex-row gap-2">
                       Runtime :
-                      <span className="text-gray-600 font-semibold">
+                      <span className="text-gray-500 font-semibold">
                         {toHourAndMinutes(detailsvalue?.runtime)}
                       </span>
                     </span>
@@ -118,18 +125,18 @@ function BannerDetailsContents() {
                 <div>
                   <div>
                     {director.length > 0 && (
-                      <h1 className="py-3 text-white border-b border-gray-800">
+                      <h1 className="py-3 text-white border-dotted border-b border-gray-600">
                         Director :{"  "}
-                        <span className="text-gray-700 font-semibold">
+                        <span className="text-gray-500 font-semibold">
                           {director[0].original_name || director[0].name}
                         </span>
                       </h1>
                     )}
 
                     {writer.length > 0 && (
-                      <h1 className="flex gap-4 border-b border-gray-800 py-3">
+                      <h1 className="flex gap-4 border-dotted border-b border-gray-600 py-3">
                         <span className="text-white w-fit">Writer</span>
-                        <span className="text-gray-700 font-semibold">
+                        <span className="text-gray-500 font-semibold">
                           {writer
                             .filter(
                               (item, index, array) =>

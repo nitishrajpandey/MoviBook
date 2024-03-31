@@ -10,6 +10,7 @@ import upcomingReducer from "./homeSlices/upcomingSlice";
 import detailsMovieTvReducer from "./detailsMovieTvSlice/detailsMovieTvSlice";
 
 
+
 const store = configureStore({
     reducer: {
         loginSignup: loginSignupReducer,
@@ -21,6 +22,7 @@ const store = configureStore({
         topRated: topRatedReducer,
         upcoming: upcomingReducer,
         detailsMovieTv: detailsMovieTvReducer
+
     }
 })
 

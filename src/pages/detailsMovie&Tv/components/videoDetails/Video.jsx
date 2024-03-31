@@ -14,14 +14,14 @@ function Video() {
     return <div></div>;
   }
   return (
-    <div className=" py-20">
+    <div className=" py-10">
       <div className="pb-10">
         <h1 className="text-white text-3xl">Official Videos</h1>
       </div>
 
       <Carousel responsive={responsivevideo} className="">
         {moviesTvVideos?.results.map((item) => (
-          <div className="w-full ss:w-[300px]">
+          <div className="w-full ss:w-[300px]" key={item?.id}>
             <ReactPlayer
               key={item?.key}
               url={`https://www.youtube.com/watch?v=${item?.key}`}
