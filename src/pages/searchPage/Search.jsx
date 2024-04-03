@@ -44,9 +44,7 @@ function Search() {
       const scrollPosition =
         window.innerHeight + document.documentElement.scrollTop + 1;
 
-      console.log("scrollposition", scrollPosition);
       const pageHeight = document.documentElement.scrollHeight;
-      console.log("pageHeight");
 
       if (scrollPosition >= pageHeight - pageHeight / 2) {
         dispatch(
@@ -77,33 +75,43 @@ function Search() {
             Search results of '{SearchKeyWord}'
           </h1>
         </div>
-        <div className="columns-1 xs:columns-2 ss:columns-3 md:columns-4 gap-5">
-          {/* <div className="flex flex-row flex-wrap"> */}
+        <div className="flex flex-wrap flex-row mx-auto justify-evenly gap-5">
           {datavalue.map((item) => (
             <div
               key={item.id}
-              className="mb-10 overflow-hidden"
+              className="mb-10 overflow-hidden w-full ss:w-[270px] ssm:w-[300px]"
               onClick={() => handelCardClicked(item.id, item.media_type)}
             >
-              <div className="aspect-[1/1.5]">
+              <div className="">
                 {item.poster_path ? (
                   <Img
                     src={posterUrl + item.poster_path}
-                    className="rounded-xl aspect-[1/1.5]"
+                    className="rounded-xl "
                   />
                 ) : (
                   <img src={noPoster} alt="No Poster" className="rounded-xl" />
                 )}
               </div>
-              <div className="relative -top-10 left-2">
-                <span className="absolute w-[50px]">
-                  <CircularRating rating={item?.vote_average?.toFixed(1)} />
-                </span>
+              <div className=" left-2 relative -top-[30px]">
+                {item?.known_for ? (
+                  <span className="absolute w-[50px]">
+                    <CircularRating
+                      rating={item?.known_for[0]?.vote_average?.toFixed(1)}
+                    />
+                  </span>
+                ) : (
+                  <span className="absolute w-[50px]">
+                    <CircularRating rating={item?.vote_average?.toFixed(1)} />
+                  </span>
+                )}
               </div>
 
-              <div className="flex flex-col w-[90%] mt-5 gap-1">
+              <div className="flex flex-col w-[100%] mt-5 gap-1">
                 <span className="text-white text-xl text-ellipsis text-nowrap overflow-hidden">
-                  {item.title || item.name}
+                  {/* {item?.known_for?.title || item.name} */}
+                  {item?.known_for
+                    ? item.known_for[0].title || item.known_for[0].name
+                    : item.name || item.title}
                 </span>
                 <span className="text-gray-600 text-xl font-medium">
                   {dayjs(item.release_date || item.first_air_date)?.format(

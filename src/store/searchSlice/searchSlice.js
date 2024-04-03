@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchDataFromTMBD } from "../../api/api";
 
 export const fetchSearchDataApi = createAsyncThunk("fetchSearchDataApi", async (url) => {
-    console.log(url);
+
     const data = await fetchDataFromTMBD(url)
     return data
 })
@@ -25,7 +25,7 @@ const searchSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchSearchDataApi.fulfilled, (state, action) => {
-                console.log(action);
+
                 state.loding = false
 
                 const newResults = action.payload.results.filter(newSearch => {

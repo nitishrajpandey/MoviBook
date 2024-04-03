@@ -4,6 +4,7 @@ import TrendingMovies from "./components/trendingMovies/TrendingMovies";
 import PopularSection from "./components/popular/PopularSection";
 import TopRated from "./components/topRated/TopRated";
 import Upcoming from "./components/upcoming/Upcoming";
+import { useSelector } from "react-redux";
 
 function Home() {
   return (

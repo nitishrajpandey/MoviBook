@@ -2,17 +2,25 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchDataFromTMBD } from "../../api/api";
 
 export const fetchImageUrls = createAsyncThunk("fetchImageUrls", async (url) => {
-
     const data = await fetchDataFromTMBD(url)
+    return data
+})
 
+export const fetchMoviesGenreApi = createAsyncThunk("fetchMoviesGenreApi", async (url) => {
+    const data = await fetchDataFromTMBD(url)
+    return data
+})
 
+export const fetchTvGenreApi = createAsyncThunk("fetchTvGenreApi", async (url) => {
+    const data = await fetchDataFromTMBD(url)
     return data
 })
 
 const initialSlice = createSlice({
     name: "initial",
     initialState: {
-        url: {}
+        url: {},
+        genresCollection: []
     },
     reducers: {
 
@@ -29,8 +37,22 @@ const initialSlice = createSlice({
 
                 state.url = url
             })
+
+            .addCase(fetchMoviesGenreApi.fulfilled, (state, action) => {
+
+                const newGenres = action.payload.genres.filter(newGenre => {
+                    return !state.genresCollection.some(existingGenre => existingGenre.id === newGenre.id);
+                });
+                state.genresCollection = [...state.genresCollection, ...newGenres];
+            })
+            .addCase(fetchTvGenreApi.fulfilled, (state, action) => {
+
+                const newGenres = action.payload.genres.filter(newGenre => {
+                    return !state.genresCollection.some(existingGenre => existingGenre.id === newGenre.id);
+                });
+                state.genresCollection = [...state.genresCollection, ...newGenres];
+            })
     }
 })
-
 
 export default initialSlice.reducer

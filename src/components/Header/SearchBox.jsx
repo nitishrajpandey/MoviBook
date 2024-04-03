@@ -25,6 +25,7 @@ function SearchBox() {
     } else if (event.key === "Enter") {
       navigate(`/search/${inputElement.current.value}`);
       dispatch(addKeyWord(inputElement.current.value));
+      dispatch(closeToggle());
       inputElement.current.value = "";
     }
   };

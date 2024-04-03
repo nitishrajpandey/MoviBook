@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import ContentWrapper from "../contentWrapper/ContentWrapper";
 import { logo } from "../../assets";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { IoIosSearch } from "react-icons/io";
 import {
   handelAuthStateChanged,
@@ -53,30 +53,37 @@ function Header() {
       >
         <ContentWrapper>
           <div className="  py-3  w-full flex justify-between">
-            <div className=" flex items-center gap-3">
-              <span className="w-[40px] ">
-                <img src={logo} alt="" />
-              </span>
-              <span className="flex items-center">
-                <h1
-                  className="text-3xl gradient-text   font-bold"
-                  style={{
-                    clipPath: "clip-path: polygon(0% 0%, 100% 100%, 0% 100%)",
-                  }}
-                >
-                  MOVIX
-                </h1>
-                <img
-                  src="https://icons.iconarchive.com/icons/jommans/ladybug/128/File-Movie-icon.png"
-                  className="w-[40px]  "
-                />
-              </span>
-            </div>
+            <Link to={"/home"}>
+              <div className=" flex items-center gap-3">
+                <span className="w-[40px] ">
+                  <img src={logo} alt="" />
+                </span>
+                <span className="flex items-center">
+                  <h1
+                    className="text-3xl gradient-text   font-bold"
+                    style={{
+                      clipPath: "clip-path: polygon(0% 0%, 100% 100%, 0% 100%)",
+                    }}
+                  >
+                    MOVIX
+                  </h1>
+                  <img
+                    src="https://icons.iconarchive.com/icons/jommans/ladybug/128/File-Movie-icon.png"
+                    className="w-[40px]  "
+                  />
+                </span>
+              </div>
+            </Link>
             {user && (
               <>
                 <div className="hidden ssm:flex items-center gap-5 ">
                   <ul className="text-white flex gap-5  text-xl">
-                    <li>Home</li>
+                    <NavLink to={"/exploreMovies"}>
+                      <li>Movies</li>
+                    </NavLink>
+                    <NavLink to={"/exploreTv"}>
+                      <li>TV Shows</li>
+                    </NavLink>
                   </ul>
                   <span>
                     <IoIosSearch

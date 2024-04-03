@@ -9,6 +9,7 @@ import topRatedReducer from "./homeSlices/topRatedSlice";
 import upcomingReducer from "./homeSlices/upcomingSlice";
 import detailsMovieTvReducer from "./detailsMovieTvSlice/detailsMovieTvSlice";
 import searchReducer from "./searchSlice/searchSlice";
+import explorePageReducer from "./explorePageSlice/explorePageSlice";
 
 
 
@@ -23,7 +24,8 @@ const store = configureStore({
         topRated: topRatedReducer,
         upcoming: upcomingReducer,
         detailsMovieTv: detailsMovieTvReducer,
-        search: searchReducer
+        search: searchReducer,
+        explore: explorePageReducer
 
     }
 })
