@@ -39,9 +39,7 @@ function PopularSection() {
           <div className="bg-white px-1 py-1 rounded-3xl flex gap-2 items-center ">
             <button
               className={`px-4 xs:px-8 py-1 rounded-2xl  ${
-                activeTab === "movie"
-                  ? "bg-gradient-to-br from-orange-400 to-pink-600 text-white"
-                  : ""
+                activeTab === "movie" ? "bg-button text-white" : ""
               }`}
               onClick={() => handleTabChange("movie")}
             >
@@ -49,9 +47,7 @@ function PopularSection() {
             </button>
             <button
               className={`px-4 xs:px-8 py-1 rounded-3xl ${
-                activeTab === "tv"
-                  ? "bg-gradient-to-br from-orange-400 to-pink-600 text-white"
-                  : ""
+                activeTab === "tv" ? "bg-button text-white" : ""
               }`}
               onClick={() => handleTabChange("tv")}
             >

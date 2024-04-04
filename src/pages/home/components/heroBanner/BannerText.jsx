@@ -29,7 +29,7 @@ function BannerText() {
   return (
     <ContentWrapper>
       <div className="  flex flex-col  items-center justify-center px-5 ">
-        <span className=" text-white  font-bold text-[50px] ssm:text-[60px] md:text-[90px]">
+        <span className=" text-white gradient-text font-bold text-[50px] ssm:text-[60px] md:text-[90px]">
           Welcome.
         </span>
         <span className="text-white text-xl md:text-2xl text-center">
@@ -44,7 +44,7 @@ function BannerText() {
             onKeyDown={handelOnKeyDown}
           />
           <button
-            className=" py-2 ss:py-3 px-3 ss:px-5 font-semibold rounded-r-2xl bg-gradient-to-br from-orange-400 to-pink-600 text-white text-xl"
+            className=" py-2 ss:py-3 px-3 ss:px-5 font-semibold rounded-r-2xl bg-button text-white text-xl"
             onClick={handelOnclickSearch}
           >
             Search

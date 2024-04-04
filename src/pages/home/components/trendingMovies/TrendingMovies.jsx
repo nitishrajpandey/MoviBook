@@ -41,9 +41,7 @@ function TrendingMovies() {
           <div className="bg-white px-1 py-1 rounded-3xl flex gap-2 items-center ">
             <button
               className={`px-4 xs:px-8 py-1 rounded-2xl  ${
-                activeTab === "day"
-                  ? "bg-gradient-to-br from-orange-400 to-pink-600 text-white"
-                  : ""
+                activeTab === "day" ? "bg-button text-white" : ""
               }`}
               onClick={() => handleTabChange("day")}
             >
@@ -51,9 +49,7 @@ function TrendingMovies() {
             </button>
             <button
               className={`px-4 xs:px-8 py-1 rounded-3xl ${
-                activeTab === "week"
-                  ? "bg-gradient-to-br from-orange-400 to-pink-600 text-white"
-                  : ""
+                activeTab === "week" ? "bg-button text-white" : ""
               }`}
               onClick={() => handleTabChange("week")}
             >

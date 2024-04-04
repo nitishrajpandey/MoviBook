@@ -53,8 +53,6 @@ function ExploreTvShows() {
     }
   };
 
-  // /discover/movie&page=${page + 1}
-
   useEffect(() => {
     window.addEventListener("scroll", handleInfiniteScroll);
     return () => window.removeEventListener("scroll", handleInfiniteScroll);
